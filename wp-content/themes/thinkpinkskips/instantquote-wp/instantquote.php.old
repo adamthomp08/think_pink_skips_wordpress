@@ -1,0 +1,350 @@
+<HTML>
+<HEAD>
+<TITLE>Dynamic Instant Quote</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0>
+        <div align="center">
+          <center>
+          <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#BDD7CB" width="85%" bgcolor="#FFFFDF">
+            <tr>
+              <td width="100%" align="center" colspan="2">
+              <p align="left"><b><font size="5">
+              <font color="#0000FF">Quote</font>
+              </font>
+
+<!-- BEGIN PHP SCRIPTING -->
+
+<?php
+
+foreach ($_POST as $key => $value)
+{
+	$$key = $value;
+}
+
+/*  This script will receive variables from quote-form.html.  The variables being received are:
+    Skip_Size, Duration, pcode1, pcode2, Permit
+*/
+
+/* HERE IS WHERE ALL VARIABLES ARE DEFINED IN CASE A VARIABLE IS NOT SELECTED ON THE
+   QUOTE-FORM.HTML.  SOME OF THE VARIABLES MAY BE INCOMING WITHOUT VALUES AND THE
+   VALUES MUST BE DEFINED TO PREVENT ERRORS.
+*/
+
+if ($Skip_Size == NULL)
+{
+  $Error_txt[] = "Skip Size";
+}
+
+if ($Duration == NULL)
+{
+  $Error_txt[] = "Duration of Hire";
+}
+
+if ($pcode1 == NULL) 
+{
+  $Error_txt[] = "Your Postcode (first part)";
+}
+
+if ($pcode2 == NULL)
+{
+  $Error_txt[] = "Your Postcode (second part)";
+}
+
+if ($Permit == NULL)
+{
+  $Error_txt[] = "On/Off Road";
+}
+
+// load $data
+if($pcode1 != NULL AND $pcode2 != NULL)
+{	
+	// Work Out Area Code From Postcode
+	include_once("mistrysolved.locationcalc.php");
+
+	// call the PostCode Calculator function
+	$data = locationCalc::getLocationData($pcode1,$pcode2);
+}
+
+
+// format errors for display
+if($Error_txt != NULL)
+{
+	$Error_txt = "ERRORS:<br/> The following information was missing: <br/><br/>" . @implode("<br/> ", $Error_txt) . "<br/><br/> Please press back on the browser to correct the problems and try again.";
+}
+// invalid location
+elseif($data == NULL)
+{
+	$Error_txt = "<br/>We could not find a match to your post code. Please call us on the phone number above for a quote<br/><br/>";
+}
+
+// if there are no errors
+if ($Error_txt == NULL) 
+{
+	// CALCULATE SKIP HIRE PRICES
+	switch ($Skip_Size)   
+	{
+		case "Mini":
+		switch ($data->areaCode)  
+		{
+			case "Local":
+			
+			if($Duration == "3_Day") 
+			{
+		  		$total = 50;
+		  	}
+		  	else 
+		  	{
+		       		$total = 50;
+		  	}
+		  	
+		  	break;
+		  	
+		 	case "Area-A":
+		       	$total = 60;
+		  	break;
+		  	
+		  	case "Area-B":
+		       	$total = 75;
+		   	break;
+		  	
+		  	case "Area-C":
+			$total = 90;
+		  	break;
+		  	
+		  	case "Area-D":
+			$total = 95;
+		  	break;
+		 	
+		 	case "Area-E":
+			$total = 115;
+		  	break;
+		}
+		break;
+		
+		case "Midi":
+		switch ($data->areaCode)  
+		{
+			case "Local":
+		   	if($Duration == "3_Day") 
+		   	{
+		       		$total = 65.52;
+		   	}
+		   	else 
+		   	{
+		       		$total = 72;
+		   	}
+		  	break;
+		  	
+		  	case "Area-A":
+		       	$total = 82;
+		  	break;
+		  	
+		  	case "Area-B":
+		       	$total = 97;
+		  	break;
+		  	
+		  	case "Area-C":
+		       	$total = 112;
+		  	break;
+		  	
+		  	case "Area-D":
+		     	$total = 117;
+		  	break;
+		  	
+		  	case "Area-E":
+		     	$total = 137;
+		  	break;
+		}
+		break;
+		
+		
+		case "Builders":
+		switch ($data->areaCode)  
+		{
+			case "Local":
+		   	if ($Duration == "3_Day") 
+		   	{
+		       		$total = 113.75;
+		   	}
+		   	else 
+		  	{
+		       		$total = 125;
+		   	}
+		  	break;
+		  	
+		 	case "Area-A":
+		       	$total = 135;
+		  	break;
+		 
+		 	case "Area-B":
+		       	$total = 150;
+		  	break;
+		  	
+		 	case "Area-C":
+		       	$total = 165;
+		  	break;
+		  	
+		 	case "Area-D":
+		       	$total = 170;
+		  	break;
+		 	
+		 	case "Area-E":
+		       	$total = 190;
+		 	break;
+		}
+		break;
+		
+		default:
+		$total = 0;
+		break;
+	}
+
+	// INCLUDE PERMIT COST
+   	if ($Permit == 'Yes') 
+   	{
+     		$total = $total + 30;
+   	}
+
+	// INCLUDE VAT
+   	$total = $total * 1.175;
+   	$total = number_format ($total, 2);
+
+   	// END CALCULATIONS FOR QUOTE TOTAL
+}
+
+// START SCREEN PRINTING OF DATA
+
+if($Error_txt == NULL) 
+{
+
+  echo "
+            </td>
+            </tr>
+            <tr>
+              <td width='100%' align='center' colspan='2'>&nbsp;</td>
+            </tr>
+            <tr>
+              <td width='100%' align='center' colspan='2'><font color='#FF0000'><b>
+              SKIP HIRE QUOTE</b></font></td>
+            </tr>
+            <tr>
+              <td width='51%' align='right'>Skip Size&nbsp;&nbsp;</td>
+              <td width='49%'><b>
+  $Skip_Size </b>
+            </td>
+            </tr>
+            <tr>
+              <td width='51%' align='right'>Skip Hire Duration&nbsp;&nbsp;
+              </td>
+              <td width='49%'><b>
+  $Duration </b>
+              </td>
+            </tr>
+            <tr>
+              <td width='51%' align='right'>Customer Location&nbsp;&nbsp;</td>
+              <td width='49%'> <b>$data->areaname </b>
+              </td>
+            </tr>
+            <tr>
+              <td width='51%' align='right'>Permit Required&nbsp;&nbsp;</td>
+              <td width='49%'> <b>
+  $Permit </b>
+              </td>
+            </tr>
+            <tr>
+              <td width='100%' colspan='2'>&nbsp;</td>
+            </tr>
+            <tr>
+              <td width='100%' colspan='2' align='center'><b>
+              <font size='3' color='#FF0000'>
+              QUOTE TOTAL:&nbsp;&nbsp;&nbsp;
+  &pound;$total&nbsp;&nbsp;&nbsp;(Inclusive of VAT)
+              </font></b></td>
+            </tr>
+            <tr>
+              <td width='100%' colspan='2'>&nbsp;</td>
+            </tr>
+
+           
+            <tr>
+              <td width='100%'align='center' colspan='2'><b>To accept this quote, please complete your contact details below and click the 'Accept This Quote' button. <br><br>To recalculate the quote click your browser 'back button'</b><br><br></td>
+            </tr>
+            <tr>
+              <td width='40%' align='right'>
+              <!-- FORM INFORMATION -->
+              <form action='ledformmail.php' method='POST'> 
+              Your Name:&nbsp;</td>
+              <td width='60%'><input type='text' size='30' name='Name' tabindex='1' maxlength='50'>
+              </td>
+            </tr> 
+            <tr>
+              <td width='40%' align='right'>Your Phone Number:&nbsp;</td>
+              <td width='60%'><input type='text' size='20' name='Phone' tabindex='2' maxlength='50'>
+              </td>
+            </tr> 
+            <tr>
+              <td width='40%' align='right'>Your Email:&nbsp;</td>
+              <td width='60%'><input type='text' size='30' name='email' tabindex='3' maxlength='50'>
+              </td>
+            </tr> 
+            <tr>
+              <td width='40%' align='right'>Your Address:&nbsp;</td>
+              <td width='60%'><textarea name='Address' rows='5' cols='50' tabindex='4'></textarea>
+              </td>
+            </tr>
+            </tr> 
+            <tr>
+              <td width='100%' colspan='2'>
+<input type=hidden name=subject value='ThinkPinkSkips Instant Quote Submission'>
+<input type=hidden name=size value='$Skip_Size'>
+<input type=hidden name=duration value='$Duration'>
+<input type=hidden name=pcode1 value='$pcode1'>
+<input type=hidden name=pcode2 value='$pcode2'>
+<input type=hidden name=Location value='$data->areaname'>
+<input type=hidden name=permit value='$Permit'>
+<input type=hidden name=Quoted value='$total'>
+<input type=hidden name=to value='duncan@eze-team.com'>
+<input type=hidden name=redirect value='http://www.thinkpinkskips.co.uk/quote/thanks.html'>
+
+
+             </td>
+            </tr>
+            <tr>
+              <td width='100%' colspan='2' align='center'> 
+               <input type='submit' value='Accept This Quote' name='Submit_Button' style='font-family: Arial; font-size: 10pt; color: #006600; font-weight: bold' tabindex='32'>
+                <input type='reset' value='Reset' name='Reset_Button' style='font-size: 8pt; font-family: Arial' tabindex='33'></p>
+              </td>
+            </tr>
+           </table>
+          </center>
+        </div>
+";
+}
+else
+{
+  echo "
+            </td>
+            </tr>
+            <tr>
+              <td width='100%' colspan='2' align='center'><b>
+              <font size='2' color='#FF0000'>
+  		$Error_txt
+              </td>
+            </tr>            
+         </table>
+          </center>
+        </div>
+";
+}
+
+// EMAIL QUOTE - CHANGE BOTH EMAIL ADDRESSES BELOW IN CAPITAL LETTERS
+
+/* mail ('duncan@eze-team.com', 'Instant Quote Generated', " - Quote Total:  $total --> Skip Size:  $Skip_Size - Hire Duration:  $Duration - Customer Location:  $Location - On Road Permit:  $Permit", 'From: YOU@WHEREVER.com');
+*/
+
+?>
+
+<!-- END PHP SCRIPT -->
+        
+</BODY>
+</HTML>

@@ -1,0 +1,222 @@
+
+.pink-text-area-form{
+	@include one-cols;
+
+	padding: 40px 0px;
+	background-color: $pink; 
+	color: #fff; 
+
+	@media (max-width: 767px){
+		padding: 20px 0px;
+	}
+
+	.date-picker-container{
+		float: left; 
+		width: 70%;
+		margin-right: 2%;
+		@media (max-width: 767px){
+			width: 100%;
+			margin: 0 0 20px;
+		}
+	}
+	.hire-days{
+		position: absolute;
+		width: 28%; 
+		margin-left: 72%; 
+		top: 0;
+		left: 0; 
+		right: 0; 
+		bottom: 0; 
+		@media (max-width: 767px){
+			float: left; 
+			position: relative;
+			width: 100%;
+			margin: 0; 
+		}
+	}
+	h2{
+		color: $yellow; 
+		text-transform: uppercase;
+		font-weight: 900;
+		font-size: 22px;
+	}
+
+	h2 span{
+		color: #fff;
+	}
+	.col{
+		position: relative;
+	}
+
+	.three-day,
+	.twenty-one-day{
+		position: absolute;
+		width: 100%; 
+		border: 2px solid #fff;
+		text-transform: uppercase; 
+		font-weight: 900; 
+		text-align: center;
+		padding: 15px;
+		bottom: 0;
+		cursor: pointer;
+		@media (max-width: 767px){
+			position: relative;
+		}
+	}
+
+	.active.three-day,
+	.active.twenty-one-day{
+		background-color: #fff;
+		color: $pink;
+	}
+
+	.three-day{
+		bottom: 70px;
+		@media (max-width: 767px){
+			bottom: initial;
+			margin-bottom: 20px;
+		}
+	}
+
+	.ui-datepicker{
+		width: 100%;
+		padding: 0;
+	}
+
+	.ui-datepicker td a{
+		text-align: center;
+	}
+
+	.ui-datepicker-calendar{
+		background-color: $pink;
+	}
+
+	.ui-state-default, .ui-widget-content .ui-state-default{
+		background-color: $light_pink;
+		color: #fff;
+		border: 1px solid $light_pink;
+	}
+
+	.ui-widget.ui-widget-content{
+		border: none;
+	}
+
+	.ui-datepicker table{
+		margin: 0;
+	}
+
+	.ui-datepicker td{
+		padding: 0;
+	}
+
+	.ui-datepicker td a{
+		padding: 8px;
+		font-size: 12px;
+	}
+
+	.ui-datepicker-calendar thead{
+		border-bottom: 1px solid $yellow;
+		color: #fff;
+		font-size: 12px;
+	}
+
+	.ui-widget-header{
+		background-color: $pink;
+		color: #fff;
+		border: 1px solid $pink;
+		text-transform: uppercase;
+	}
+
+	.ui-datepicker .ui-datepicker-title {
+	    font-size: 12px;
+	}
+
+	.ui-state-active, .ui-widget-content .ui-state-active{
+		background-color: $yellow !important;
+		border-color: $yellow !important;
+		color: #fff;
+	}
+
+	.ui-icon-circle-triangle-e{
+		background-image: url('/wp-content/themes/thinkpinkskips/img/right_arrow.png');
+		background-position: 50% 50%;
+	}
+	.ui-icon-circle-triangle-w{
+		background-image: url('/wp-content/themes/thinkpinkskips/img/left_arrow.png');
+		background-position: 50% 50%;
+	}
+
+	.ui-corner-all{
+		border-radius: 0px;
+	}
+
+	.ui-datepicker-next-hover,
+	.ui-datepicker-prev-hover{
+		background-color: $yellow; 
+		border: 0;
+	}
+
+	.ui-datepicker-week-end .ui-state-default {
+		background-color: $med_pink;
+		border: 1px solid $med_pink;
+	}
+}
+
+
+.skips-selection{
+
+	@include four-cols;
+
+	padding: 40px 0; 
+	background-color: $light_grey; 
+
+	@media (max-width: 767px){
+		padding: 20px 0px;
+	}
+
+	h2{
+		color: $pink; 
+		text-transform: uppercase;
+		font-weight: 900;
+		font-size: 22px;
+	}
+
+	h2 span{
+		color: $text_black;
+	}
+
+	.skip-title{
+		display: inline-block; 
+		width: 100%;
+		font-weight: 900; 
+		text-transform: uppercase; 
+	}
+
+	.skip-size{
+		display: inline-block; 
+		width: 100%;
+		font-weight: 200; 
+		margin-bottom: 40px;
+	}
+
+	.skip-btn{
+		padding: 10px;
+		color: $pink;
+	}
+
+	.skip-btn:hover{
+		cursor: pointer; 
+		background-color: $pink;
+		color: #fff;
+	}
+
+	.active.skip-btn{
+		background-color: $pink;
+		color: #fff;
+	}
+
+	.last img{
+		margin-top: -10px;
+	}
+
+}

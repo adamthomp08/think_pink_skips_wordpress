@@ -1,0 +1,94 @@
+
+.contact-details{
+	@include two-cols;
+
+	padding: 40px 0px; 
+	background-color: $light_grey;
+	margin-bottom: 30px;
+
+	.icon-details .sub-col {
+	    display: block;
+	    float: left;
+	    width: 15%;
+	}
+
+	.icon-details .last.sub-col {
+	    width: 85%;
+	}
+
+	.icon-details i {
+	    font-size: 30px;
+	    color: $pink;
+	}
+
+	h5{
+		color: $pink;
+		font-weight: 900;
+		font-size: 28px; 
+		margin: 0 0 40px; 
+		text-transform: uppercase;
+		text-align: center;
+	}
+	h5:after{
+		display: block;
+    	content: ' ';
+    	background-color: #f4c100;
+   		width: 70px;
+   		height: 2px;
+    	margin: 20px auto 0;
+	}
+	p{
+		font-size: 0.9em;
+		color: $text_black;
+	}
+	p span{
+		display: block;
+		font-weight: 900;
+	}
+	a{
+		text-decoration: none; 
+		color: $text_black;
+	}
+	.nf-field-element input[type=text],
+	.nf-field-element input[type=email],
+	.nf-field-element input[type=tel],
+	.nf-field-element textarea{
+		color: $text_black;
+		margin-bottom: 10px !important; 
+		height: 40px;
+		width: 100%;
+		border: none; 
+		background-color: #fff;
+		padding: 10px;
+	}
+	.nf-field-element input[type=button]{
+		width: 122px;
+	    margin-left: auto;
+	    display: block;
+	    background-color: $pink;
+	    border: 0;
+	    padding: 10px;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-weight: 600;
+	}
+	.nf-field-element textarea{
+		width: 100%;
+		border: none; 
+		background-color: #fff;
+		padding: 10px;
+	}
+	.nf-field-container{
+		margin-bottom: 0px;
+	}
+	.nf-field-element textarea {
+        height: 64px;
+	}
+	h3, .nf-form-fields-required{
+		display: none; 
+	}
+	.g-recaptcha {
+	    float: right;
+   	 	margin-bottom: 10px;
+	}
+}

@@ -1,0 +1,96 @@
+
+.footer{
+	@include three-cols;
+
+	background-color: $black;
+	color: #fff;
+	padding: 20px 0px; 
+	font-size: 0.8em;
+
+	i {
+	    color: #069ede;
+	    font-size: 32px;
+	}
+
+	.col{
+		@media (max-width: 1040px){
+			width: 32%;
+			max-width: 100%; 
+			margin-right: 2%; 
+		}
+		@media (max-width: 767px){
+			width: 100%;
+			max-width: 100%; 
+			margin-right: 0%; 
+			margin-bottom: 10px; 	
+		}
+	}
+	.last.col{
+		margin-right: 0px;
+		@media (max-width: 767px){
+			margin-right: 0%; 
+			margin-bottom: 0; 	
+		}
+	}
+
+	.sub-col {
+	    display: block;
+	    float: left;
+	    width: 10%;
+	    margin-right: 2%;
+	    @media (max-width: 767px){
+	    	display: none; 
+	    }
+	}
+
+	.last.sub-col {
+	    width: 88%;
+	    margin-right: 0;
+	    @media (max-width: 767px){
+	    	display: block; 
+	    }
+	}
+
+	p{
+		margin: 0;
+	}
+
+	.blue{
+		color: $light_blue;
+	}
+
+	span{
+		display: inline-block;
+	}
+
+	a{
+		color: $light_blue;
+		text-decoration: none; 
+	}
+	.last.col {
+		text-align: right;
+		@media (max-width: 767px){
+    		text-align: left;
+    	}
+	}
+
+	.last.col span{
+		display: block; 
+		text-align: right; 
+		@media (max-width: 767px){
+    		text-align: left;
+    	}
+	}
+
+	.bottom-text{
+		display: block;
+    	padding-top: 50px;
+    	text-align: center;
+    	@media (max-width: 767px){
+    		padding: 0;
+    		text-align: left;
+    	}
+	}
+
+} 
+

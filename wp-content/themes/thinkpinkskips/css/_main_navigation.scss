@@ -1,0 +1,131 @@
+.main-nav{
+
+	padding: 10px 0px; 
+	position: relative;
+
+	@media (max-width: 840px){
+	 	border-bottom: 1px solid #ededed;
+	}
+
+	.logo{
+		float: left; 
+		width: 290px;
+		margin-left: -12px;
+	}
+
+	.logo img{
+		max-width: 290px; 
+		@media (max-width: 767px){
+		    max-width: 210px;
+		}
+	}
+	nav{
+		float: right; 
+		margin-left: 20px; 
+		padding: 10px 0;
+		@media (max-width: 767px){
+			margin: 0;
+		}
+	}
+	nav ul{
+		margin: 0;
+		padding: 0; 
+		list-style: none;
+		text-align: right;
+		@media (max-width: 840px){
+			display: none;
+		  	position: absolute;
+		    left: 0;
+		    top: 79px;
+		    right: 0;
+		    background-color: #fff;
+		    z-index: 2;	
+		}
+		@media (max-width: 767px){
+		    top: 59px;
+		    border-top: 1px solid #ededed;
+		}
+	}
+	nav ul li{
+		display: inline-block;
+    	padding: 12px 15px;  
+    	@media (max-width: 900px){
+    		padding: 12px 8px;  
+    	}  	
+		@media (max-width: 840px){
+			width: 100%;
+	    	text-align: left;
+	    	padding: 10px 20px;
+	    	border-bottom: 1px solid #ededed;
+    	    position: relative;
+    		height: 40px;
+		}
+
+	}
+	nav ul li a{
+		text-decoration: none;
+		font-size: 0.85em;
+		color: $pink; 
+		font-weight: 600;
+		position: relative; 
+		@media (max-width: 840px){
+		    position: absolute;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    top: 0;
+		    padding: 10px 20px;
+		}
+	}
+	nav ul li a:hover:after {
+      	width: 100%;
+     	background-color: $yellow;
+    }
+	nav ul li a:after{
+		content: ' ';
+		position: absolute; 
+		left: 0;
+		bottom: -6px; 
+		width: 100%; 
+		height: 2px; 
+		width: 0;
+      	background: transparent;
+      	transition: width .3s ease, background-color .3s ease;
+      	-webkit-transition: width .3s ease, background-color .3s ease;
+      	-moz-transition: width .3s ease, background-color .3s ease;
+      	-o-transition: width .3s ease, background-color .3s ease;
+
+		@media (max-width: 840px){
+      		content: none; 
+      	}
+	}
+	a.active:after{
+		width: 100% !important; 
+     	background-color: $yellow !important; 
+	}
+	nav ul li:last-child {
+    	padding-right: 0;
+	}
+	.burger-icon{
+		display: none;
+		position: absolute;
+		width: 40px; 
+		height: 40px;  
+		right: 20px;
+		top: 10px;
+		display: none;
+
+		@media (max-width: 840px){
+      		display: block; 
+      	}
+      	@media (max-width: 767px){
+      		top: 3px;
+      	}
+	}
+	i{
+		font-size: 40px; 
+		color: #000; 
+	}
+}
+
+
