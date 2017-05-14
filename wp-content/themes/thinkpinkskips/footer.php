@@ -32,9 +32,9 @@
         </div>
          <div class="col last">
                    <p><strong>Part of the <em class="blue">A1 Supa Skips</em> family:</strong></p>
-                   <span>Quay Concrete</span>
-                   <span>Think Pink Skips</span>
-                   <span>Envirofirst</span>
+                   <span><a href="http://quayconcrete.co.uk/">Quay Concrete</a></span>
+                   <span><a href="http://thinkpinkskips.co.uk/">Think Pink Skips</a></span>
+                   <span><a href="http://www.enviro-first.co.uk/">Envirofirst</a></span>
         </div>
 </div>
 </footer>

@@ -1,5 +1,6 @@
 body {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: $text_black;
 }
 
 *, *:before, *:after {
@@ -57,10 +58,10 @@ a:hover{
 
 @mixin two-cols{
 	.col{
-		float: left;
-		width: 100%;
-		max-width: 490px;
-		margin-right: 20px;
+	    float: left;
+	    width: 100%;
+	    max-width: 480px;
+	    margin-right: 40px;
 		@media (max-width: 1040px){
 			width: 49%; 
 			max-width: 100%; 

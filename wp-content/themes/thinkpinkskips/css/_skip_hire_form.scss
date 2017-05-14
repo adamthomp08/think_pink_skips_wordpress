@@ -220,3 +220,18 @@
 	}
 
 }
+
+.error-log{
+	@include one-cols;
+	margin: 0 0 50px;
+	color: red;
+	.col{
+		padding: 20px; 
+		background-color: $light_grey;
+		border: 1px dotted #b1b1b1;
+	}
+
+	.error-message{
+		font-weight: 600;
+	}
+}

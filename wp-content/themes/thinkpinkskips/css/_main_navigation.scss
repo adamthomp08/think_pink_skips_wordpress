@@ -2,6 +2,7 @@
 
 	padding: 10px 0px; 
 	position: relative;
+	border-bottom: 1px solid #ededed;
 
 	@media (max-width: 840px){
 	 	border-bottom: 1px solid #ededed;
@@ -99,7 +100,7 @@
       		content: none; 
       	}
 	}
-	a.active:after{
+	.current_page_item a:after{
 		width: 100% !important; 
      	background-color: $yellow !important; 
 	}

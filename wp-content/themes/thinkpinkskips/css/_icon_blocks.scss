@@ -21,7 +21,7 @@
 	.col{
 		max-width: 333px; 
 		margin: 0;
-		padding: 20px;
+		padding: 20px 20px 40px;
 		color: #fff; 
 		text-align: center;
 		@media (max-width: 1040px){
@@ -32,7 +32,7 @@
 		}
 	}
 	h2{
-		margin: 0 0 cmd20px; 
+		margin: 0 0 20px; 
 		line-height: 1;
 		text-transform: uppercase;
 		font-weight: 900;
@@ -49,18 +49,21 @@
 		display: block; 
 		margin: 0 auto 20px;
 	}
+	p{
+		margin: 0 0 40px; 
+	}
 	a{
-		display: block;
-		width: 120px;
-		color: #fff;
-		text-transform: uppercase;
-		font-weight: 600;
-		text-decoration: none;
-		border: 1px solid #fff;
-		margin: 0 auto; 
-		padding: 10px;
-		line-height: 1;
-
+	    display: block;
+	    width: 150px;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-weight: 900;
+	    text-decoration: none;
+	    border: 1px solid #fff;
+	    margin: 0 auto;
+	    padding: 16px 10px;
+	    line-height: 1;
+	    font-size: 14px;
 	}
 	.pink{
 		background-color: $pink;
@@ -95,7 +98,7 @@
 	h3{
 		color: #fff;
 		font-weight: 900;
-		font-size: 28px; 
+		font-size: 24px; 
 		margin: 0 0 25px; 
 		text-transform: uppercase;
 	}

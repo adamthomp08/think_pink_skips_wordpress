@@ -4,7 +4,7 @@
 
 include_once("mistrysolved.locationcalc.php");
 
-$error_message = "<p>Your request did not submit for the following reasons: </p>"; 
+$error_message = '<p class="error-message">Your request did not submit for the following reasons: </p>'; 
 $error = false; 
 $permit = false; 
 
@@ -62,10 +62,17 @@ if(isset($_POST['submit'])){
         echo '<p>Total (ex VAT): ' . number_format ($total_ex_vat, 2) . '</p>';
         echo '<p>Total (incl VAT): ' . number_format ($total, 2) . '</p>';
 
-    } else {
-        echo $error_message;
-    }
-}
+    } else {  
+        echo '<section class="error-log">';
+        echo '<div class="container">';
+        echo '<div class="col">';
+        echo $error_message; // spit out all the error
+        echo '</div>';
+        echo '</div>';
+        echo '<input id="skip-size" type="hidden" name="skip-size" value="mini" />';
+        echo '</section>';
+   }
+} else {
 
 ?>
 
@@ -177,3 +184,4 @@ for a quote for this area if you require your skip to be placed on the road.</p>
 </section>
 </form>
 
+<?php } ?>

@@ -89,11 +89,11 @@ $(function() {
 	});	
 
 
-	if(location.pathname != "/"){
-		$("a[href*='" + location.pathname + "']").addClass("active");
-	} else { 
-		$(".home").addClass("active");
-	}
+	// if(location.pathname != "/"){
+	// 	$("a[href*='" + location.pathname + "']").addClass("active");
+	// } else { 
+	// 	$(".home").addClass("active");
+	// }
 
 	$( ".burger-icon" ).click(function() {
 		$( "nav ul" ).toggle();

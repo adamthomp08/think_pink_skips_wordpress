@@ -13,6 +13,12 @@
 	}
 
 	.col{
+	    width: 100%;
+	    max-width: 333.3333px;
+	    margin-right: 0px;
+	}
+
+	.col{
 		@media (max-width: 1040px){
 			width: 32%;
 			max-width: 100%; 
@@ -61,6 +67,10 @@
 
 	span{
 		display: inline-block;
+	}
+
+	span a {
+		color: #fff;
 	}
 
 	a{
